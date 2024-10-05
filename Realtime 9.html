@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PROPADALA</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f9f9f9;
+            color: #333;
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .container {
+            display: none; /* Initially hidden */
+            width: 100%;
+            max-width: 450px;
+            padding: 30px;
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            background-color: white;
+        }
+
+        header {
+            background-color: #007BFF; /* Blue color */
+            padding: 20px;
+            text-align: center;
+            border-radius: 10px 10px 0 0;
+        }
+
+        header h1 {
+            margin: 0;
+            color: #FFD700; /* Yellow color */
+            font-size: 26px;
+            font-weight: 700;
+        }
+
+        header p {
+            margin: 5px 0 0;
+            color: #FFD700; /* Yellow color */
+            font-weight: 400;
+        }
+
+        section {
+            margin: 20px 0;
+        }
+
+        h2 {
+            color: #007BFF; /* Blue color */
+            text-align: center;
+            margin-bottom: 15px;
+            font-size: 22px;
+            font-weight: 700;
+        }
+
+        .ad-item {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 10px 0;
+            text-align: center;
+            background-color: #fff;
+            transition: transform 0.3s;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .ad-item:hover {
+            transform: scale(1.02);
+        }
+
+        label {
+            font-weight: 700;
+            margin-top: 10px;
+            display: block;
+        }
+
+        input[type="email"], input[type="password"], input[type="text"], select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #007BFF; /* Blue color */
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 15px;
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #0056b3; /* Darker blue */
+        }
+
+        footer {
+            text-align: center;
+            padding: 15px;
+            background-color: #007BFF; /* Blue color */
+            color: white;
+            position: relative;
+            width: 100%;
+            border-radius: 0 0 10px 10px;
+            margin-top: 20px;
+        }
+
+        #cart-items {
+            margin-top: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 5px 0;
+        }
+
+        .website-link {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+
+        .website-link button {
+            background-color: #FFD700; /* Yellow color */
+            color: #333;
+            font-weight: 700;
+        }
+
+        .website-link button:hover {
+            background-color: #FFC107; /* Slightly darker yellow */
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="login-container">
+        <header>
+            <h1>PROPADALA</h1>
+            <p>Your Need Is Our Top Focus</p>
+        </header>
+        <section id="login">
+            <h2>Login</h2>
+            <form id="login-form" onsubmit="handleLogin(event)">
+                <label for="email">Email:</label>
+                <input type="email" id="email" required>
+                <label for="password">Password:</label>
+                <input type="password" id="password" required>
+                <button type="submit">Login</button>
+            </form>
+        </section>
+    </div>
+
+    <div class="container" id="main-content">
+        <header>
+            <h1>Welcome to Our Store!</h1>
+            <p>Browse our items and add them to your cart.</p>
+        </header>
+        <section id="home">
+            <h2>Featured Items:</h2>
+            <div class="ad-item">
+                <h3>JolliBINI Meal A</h3>
+                <p>Deliciously satisfying meal for only ₱179!</p>
+                <button onclick="addToCart('JolliBINI Meal A', 179)">Add to Cart</button>
+            </div>
+            <div class="ad-item">
+                <h3>JolliBINI Meal B</h3>
+                <p>More flavor, more fun for just ₱299!</p>
+                <button onclick="addToCart('JolliBINI Meal B', 299)">Add to Cart</button>
+            </div>
+            <div class="ad-item">
+                <h3>Jolly Travel Tray</h3>
+                <p>Perfect for on-the-go meals at ₱99!</p>
+                <button onclick="addToCart('Jolly Travel Tray', 99)">Add to Cart</button>
+            </div>
+            <div class="ad-item">
+                <h3>Inasal Meal</h3>
+                <p>Grilled to perfection for just ₱120!</p>
+                <button onclick="addToCart('Inasal Meal', 120)">Add to Cart</button>
+            </div>
+            <div class="ad-item">
+                <h3>Inasal with Rice</h3>
+                <p>Hearty meal for only ₱150!</p>
+                <button onclick="addToCart('Inasal with Rice', 150)">Add to Cart</button>
+            </div>
+            <div class="ad-item">
+                <h3>McChicken</h3>
+                <p>Crispy chicken goodness for ₱145!</p>
+                <button onclick="addToCart('McChicken', 145)">Add to Cart</button>
+            </div>
+            <div class="ad-item">
+                <h3>Big Mac</h3>
+                <p>Classic taste for just ₱180!</p>
+                <button onclick="addToCart('Big Mac', 180)">Add to Cart</button>
+            </div>
+            <div class="ad-item">
+                <h3>French Fries</h3>
+                <p>Crispy and golden for only ₱90!</p>
+                <button onclick="addToCart('French Fries', 90)">Add to Cart</button>
+            </div>
+            <div class="website-link">
+                <a href="https://www.jollibee.com.ph/" target="_blank"><button>Order from Jollibee</button></a>
+                <a href="https://www.manginasal.com/" target="_blank"><button>Order from Mang Inasal</button></a>
+                <a href="https://www.mcdonalds.com.ph/" target="_blank"><button>Order from McDonald's</button></a>
+            </div>
+        </section>
+
+        <section id="cart">
+            <h2>Your Cart</h2>
+            <div id="cart-items"></div>
+            <button onclick="checkout('Jollibee')">Checkout to Jollibee</button>
+            <button onclick="checkout('Mang Inasal')">Checkout to Mang Inasal</button>
+            <button onclick="checkout('McDonalds')">Checkout to McDonald's</button>
+        </section>
+
+        <section id="orders">
+            <h2>Your Orders</h2>
+            <div id="order-tracking"></div>
+            <p>Order history will be displayed here.</p>
+        </section>
+
+        <section id="admin">
+            <h2>Admin Dashboard</h2>
+            <p>Manage inventory and orders here.</p>
+            <form id="admin-form">
+                <label for="order">Order:</label>
+                <input type="text" id="order" required>
+                
+                <label for="source">Order Source Location:</label>
+                <input type="text" id="source" required>
+                
+                <label for="address">Delivery Address:</label>
+                <input type="text" id="address" required>
+                
+                <label for="payment">Payment Method:</label>
+                <select id="payment" required>
+                    <option value="credit_card">Credit Card</option>
+                    <option value="gcash">GCash</option>
+                    <option value="maya">Maya</option>
+                    <option value="paypal">PayPal</option>
+                    <option value="cash_on_delivery">Cash on Delivery</option>
+                </select>
+                
+                <button type="submit">Submit Order</button>
+            </form>
+        </section>
+
+        <section id="delivery">
+            <h2>Delivery Dashboard</h2>
+            <p>View delivery notifications and update statuses.</p>
+        </section>
+
+        <section id="tracking">
+            <h2>Real-Time Tracking</h2>
+            <p>Enter your order ID to track your delivery:</p>
+            <input type="text" id="order-id" placeholder="Order ID">
+            <button onclick="trackOrder()">Track</button>
+            <div id="tracking-info"></div>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Online Ordering System</p>
+    </footer>
+
+    <script>
+        let cart = [];
+
+        function addToCart(productName, price) {
+            cart.push({ productName, price });
+            displayCart();
+        }
+
+        function displayCart() {
+            const cartItemsDiv = document.getElementById('cart-items');
+            cartItemsDiv.innerHTML = ''; // Clear current items
+
+            cart.forEach(item => {
+                const div = document.createElement('div');
+                div.className = 'cart-item';
+                div.innerHTML = `${item.productName} - ₱${item.price}`;
+                cartItemsDiv.appendChild(div);
+            });
+        }
+
+        function checkout(restaurant) {
+            switch (restaurant) {
+                case 'Jollibee':
+                    window.location.href = "https://www.jollibee.com.ph/";
+                    break;
+                case 'Mang Inasal':
+                    window.location.href = "https://www.manginasal.com/";
+                    break;
+                case 'McDonalds':
+                    window.location.href = "https://www.mcdonalds.com.ph/";
+                    break;
+            }
+        }
+
+        function trackOrder() {
+            const orderId = document.getElementById('order-id').value;
+            const trackingInfoDiv = document.getElementById('tracking-info');
+
+            if (orderId) {
+                trackingInfoDiv.innerHTML = `Tracking information for Order ID: ${orderId}. Your order is on the way!`;
+            } else {
+                trackingInfoDiv.innerHTML = 'Please enter a valid Order ID.';
+            }
+        }
+
+        function handleLogin(event) {
+            event.preventDefault();
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            if (email === "test@example.com" && password === "password") {
+                document.getElementById('login-container').style.display = 'none';
+                document.getElementById('main-content').style.display = 'block';
+            } else {
+                alert("Invalid email or password.");
+            }
+        }
+
+        // Show the login container by default
+        document.getElementById('login-container').style.display = 'flex';
+        document.getElementById('main-content').style.display = 'none';
+    </script>
+</body>
+</html>
